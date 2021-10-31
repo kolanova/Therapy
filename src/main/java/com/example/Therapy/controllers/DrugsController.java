@@ -14,7 +14,7 @@ import java.util.List;
 @Validated
 public class DrugsController {
     DrugsService drugsService;
-    public DrugsController(DrugsService drugsService){
+    public DrugsController (DrugsService drugsService){
         this.drugsService = drugsService;
     }
     @GetMapping("/drugs")

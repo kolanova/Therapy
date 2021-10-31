@@ -17,19 +17,20 @@ public class PatientController {
     public PatientController(PatientService patientService){
     this.patientService = patientService;
     }
-    @GetMapping("/getPatient")
-    public List<Patient> getPatient(){
-        return patientService.getPatient();
+    @GetMapping("/patients")
+    public List<Patient> getPatients(){
+        return patientService.getPatients();
     }
-    @GetMapping("/getPatient_id/{id}")
-    public Patient getPatientById(@PathVariable Long id){
-        return patientService.getPatientById(id);
-    }
-    @PostMapping(value = "/savePatient", consumes = "application/json")
+    @PostMapping(value = "/patients", consumes = "application/json")  //here we add only one
     public Patient addPatient(@RequestBody @Valid PatientRequest patientRequest){
         return patientService.addPatient(patientRequest);
     }
-    @DeleteMapping("/deletePatient/{id}")
+    @GetMapping("/patients/{id}")  //here the path is a resource
+    public Patient getPatientById(@PathVariable Long id){
+        return patientService.getPatientById(id);
+    }
+
+    @DeleteMapping("/patients/{id}")
     public void deletePatient(@PathVariable Long id){
         patientService.deletePatientById(id);
     }

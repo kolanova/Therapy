@@ -19,6 +19,6 @@ public class Drugs {
     private long Id;
     private String drug;
     public String drugName;
-    @ManyToMany(mappedBy = "makingTreatment")
+    @ManyToMany(mappedBy = "treatmentDrugs")
     private List<Treatment> completeTreatment = new ArrayList<>();
 }

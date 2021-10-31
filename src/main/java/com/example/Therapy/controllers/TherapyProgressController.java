@@ -18,23 +18,24 @@ public class TherapyProgressController {
     public TherapyProgressController(TherapyProgressService therapyProgressService){
         this.therapyProgressService=therapyProgressService;
     }
-    @GetMapping("/getTherapyProgress")
+    @GetMapping("/therapies/{id}")
     public TherapyProgress getTherapyProgress(@PathVariable Long id){
         return therapyProgressService.getTherapyProgressById(id);
     }
-    @PostMapping(value = "/saveTherapyProgress", consumes = "application/json")
+    @PostMapping(value = "/therapy-progresses", consumes = "application/json")
     public TherapyProgress saveTherapyProgress(@RequestBody @Valid TherapyProgressRequest therapyProgressRequest){
         return therapyProgressService.saveTherapyProgress(therapyProgressRequest);
     }
-    @PostMapping(value = "/sddTreatmentToTherapy", consumes = "application/json")
-    public TherapyProgress addTreatmentToTherapy(@RequestBody @Valid Long  therapyProgressId, Long treatmentId){
+    @PostMapping(value = "/therapies/{therapyId}/treatments/{treatmentId}")
+    public TherapyProgress addTreatmentToTherapy(@PathVariable("therapyId") Long  therapyProgressId,
+                                                 @PathVariable("treatmentId") Long treatmentId){
         return therapyProgressService.addTreatmentToTherapy(therapyProgressId, treatmentId);
     }
-    @DeleteMapping("/removeTreatmentFromTherapy/{id}")
+    @DeleteMapping(value = "/therapies/{therapyId}/treatments/{treatmentId}")
     public void deleteTherapyProgress(@PathVariable Long id){
         therapyProgressService.deleteTherapyProgress(id);
     }
-    @DeleteMapping("/cancelTherapyProgress/{id}")
+    @DeleteMapping("/therapy-progress/{id}")
     public void removeTreatmentFromTherapy(@PathVariable Long therapyProgressId, Long treatmentId){
         therapyProgressService.removeTreatmentFromTherapy(therapyProgressId, treatmentId);
     }

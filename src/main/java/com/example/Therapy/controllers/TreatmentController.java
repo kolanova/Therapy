@@ -16,17 +16,16 @@ public class TreatmentController {
     public TreatmentController(TreatmentService treatmentService){
         this.treatmentService=treatmentService;
     }
-    @GetMapping("/getPatient_id/{id}")
+    @GetMapping("/treatments/{id}")
     public Treatment getTreatmentById(@PathVariable Long id){
         return treatmentService.getTreatmentById(id);
     }
-    @PostMapping(value = "/saveTreatment", consumes = "application/json")
+    @PostMapping(value = "/treatments", consumes = "application/json")
     public Treatment addTreatment(@RequestBody @Valid TreatmentRequest treatmentRequest){
         return treatmentService.addTreatment(treatmentRequest);
     }
-    @DeleteMapping("/deleteTreatment/{id}")
+    @DeleteMapping("/treatments/{id}")
     public void deleteTreatment(@PathVariable Long id){
         treatmentService.deleteTreatment(id);
     }
-
 }

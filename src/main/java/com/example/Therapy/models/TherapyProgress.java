@@ -1,8 +1,6 @@
 package com.example.Therapy.models;
 
 import lombok.*;
-import org.springframework.data.annotation.Id;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +32,5 @@ public class TherapyProgress {
     public void removeTreatment(Treatment treatment)
     {
         appliedTreatment.remove(treatment);}
-
 
 }

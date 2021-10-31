@@ -14,7 +14,6 @@ public class TreatmentService {
     @Autowired
     private final TreatmentRepository treatmentRepository;
     private final DrugsService drugsService;
-    private Long drugsId;
 
     public TreatmentService(TreatmentRepository treatmentRepository, DrugsService drugsService){
         this.treatmentRepository = treatmentRepository;
@@ -43,7 +42,7 @@ public class TreatmentService {
     }
     public Treatment addDrugsToTreatment(Long Id, Long treatmentId){
         Treatment treatment = getTreatmentById(treatmentId);
-        Drugs drugs = drugsService.getDrugsById(drugsId);
+        Drugs drugs = drugsService.getDrugsById(treatmentId);
         treatment.addDrugs(drugs);
         return treatment;
     }
@@ -53,5 +52,4 @@ public class TreatmentService {
         treatment.removeDrugs(drugs);
         return treatment;
     }
-
 }
