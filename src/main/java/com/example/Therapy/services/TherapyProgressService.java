@@ -1,11 +1,15 @@
 package com.example.Therapy.services;
 
-import com.example.Therapy.controllers.requests.TherapyProgressRQ;
+import com.example.Therapy.controllers.requests.TherapyProgressRequest;
 import com.example.Therapy.models.TherapyProgress;
 import com.example.Therapy.models.Treatment;
 import com.example.Therapy.repositories.TherapyProgressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import javax.validation.Valid;
+
+@Service
 public class TherapyProgressService {
     @Autowired
     private final TherapyProgressRepository therapyProgressRepository;
@@ -25,8 +29,8 @@ public class TherapyProgressService {
         therapyProgressRepository.delete(therapyProgress);
         return therapyProgress;
     }
-    public TherapyProgress saveTherapyProgress(TherapyProgressRQ therapyProgressRQ) {
-        String name = therapyProgressRQ.getName();
+    public TherapyProgress saveTherapyProgress(@Valid TherapyProgressRequest therapyProgressRequest) {
+        String name = therapyProgressRequest.getName();
         TherapyProgress therapyProgress = TherapyProgress
                 .builder()
                 .name(name)

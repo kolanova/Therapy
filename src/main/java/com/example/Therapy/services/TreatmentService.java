@@ -1,5 +1,5 @@
 package com.example.Therapy.services;
-import com.example.Therapy.controllers.requests.TreatmentRQ;
+import com.example.Therapy.controllers.requests.TreatmentRequest;
 import com.example.Therapy.models.Drugs;
 import com.example.Therapy.models.TreatmentType;
 import com.example.Therapy.models.Treatment;
@@ -20,10 +20,10 @@ public class TreatmentService {
         this.treatmentRepository = treatmentRepository;
         this.drugsService = drugsService;
     }
-    public Treatment addTreatment(TreatmentRQ treatmentRQ){
-        String name = treatmentRQ.getName();
-        TreatmentType Type = treatmentRQ.getType();
-        int period = treatmentRQ.getPeriod();
+    public Treatment addTreatment(TreatmentRequest treatmentRequest){
+        String name = treatmentRequest.getName();
+        TreatmentType Type = treatmentRequest.getType();
+        int period = treatmentRequest.getPeriod();
         Treatment treatment = Treatment
                 .builder()
                 .name(name)

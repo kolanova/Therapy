@@ -1,6 +1,6 @@
 package com.example.Therapy.services;
 
-import com.example.Therapy.controllers.requests.PatientRQ;
+import com.example.Therapy.controllers.requests.PatientRequest;
 import com.example.Therapy.exceptions.PatientNotFoundException;
 import com.example.Therapy.models.Patient;
 import com.example.Therapy.repositories.PatientRepository;
@@ -18,11 +18,11 @@ public class PatientService {
     public List<Patient> getPatient(){
         return patientRepository.findAll();
     }
-    public Patient addPatient(PatientRQ patientRQ){
-        String firstName= patientRQ.getFirstName();
-        String lastName= patientRQ.getLastName();
-        String phone= patientRQ.getPhone();
-        String email = patientRQ.getEmail();
+    public Patient addPatient(PatientRequest patientRequest){
+        String firstName= patientRequest.getFirstName();
+        String lastName= patientRequest.getLastName();
+        String phone= patientRequest.getPhone();
+        String email = patientRequest.getEmail();
         Patient patient = Patient
                 .builder()
                 .firstName(firstName)

@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Getter
-public class DrugsRQ {
-    private String drug;
-    public String drugName;
+public class TherapyProgressRequest {
+    private String name;
 }
